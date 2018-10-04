@@ -1,4 +1,4 @@
-# fix_kde_chrome_app_icon
+# fix_chrome_app_desktop_file
 An on-demand Google Chrome .desktop app window class updater bash script.
 
 This script works around an issue where KDE Plasma 5.1x (as of at least 2018-10-03) is unable to separate Google Chrome App windows from Google Chrome's general window class. A consequence of this would be Apps not using their intended icons, and also grouping under a single Chrome window. It's a minor usability issue.
@@ -15,16 +15,16 @@ As a workaround for other distros (or where this is not currently working), you 
 
 # Installation and Usage
 1. Place the script in ~/.local/share/applications, where your .desktop files are.
-2. Set Execute permissions on the script. For example: `chmod 755 fix_kde_chrome_app_icons`
+2. Set Execute permissions on the script. For example: `chmod 755 fix_chrome_app_desktop_file
 3. Determine which chrome-\*.desktop file you need to modify.  
 You can check the `Name` value from each of the chrome-\*.desktop files to see what Chrome App it corresponds with.
 4. Run the script with a chosen chrome-\*.desktop file for its argument.  
-For example, `./fix_kde_chrome_app_icons chrome-pjkljhegncpnkpknbcohdijeoejaedia-Default.desktop`  
+For example, `./fix_chrome_app_desktop_file chrome-pjkljhegncpnkpknbcohdijeoejaedia-Default.desktop`  
 The script will automatically prompt the installation of `xdotool`, if needed.
 
 # Example
 ```
-$ ./fix_kde_chrome_app_icon.bash chrome-pjkljhegncpnkpknbcohdijeoejaedia-Default.desktop`
+$ ./fix_chrome_app_desktop_file chrome-pjkljhegncpnkpknbcohdijeoejaedia-Default.desktop`
 `Checking if xdotool is installed...
 xdotool is already installed - proceeding.
 Modifying chrome-pjkljhegncpnkpknbcohdijeoejaedia-Default.desktop, Gmail, with class crx_pjkljhegncpnkpknbcohdijeoejaedia:
