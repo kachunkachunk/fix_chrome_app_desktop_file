@@ -24,8 +24,8 @@ The script will automatically prompt the installation of `xdotool`, if needed.
 
 # Example
 ```
-$ ./fix_chrome_app_desktop_file chrome-pjkljhegncpnkpknbcohdijeoejaedia-Default.desktop`
-`Checking if xdotool is installed...
+$ ./fix_chrome_app_desktop_file chrome-pjkljhegncpnkpknbcohdijeoejaedia-Default.desktop
+Checking if xdotool is installed...
 xdotool is already installed - proceeding.
 Modifying chrome-pjkljhegncpnkpknbcohdijeoejaedia-Default.desktop, Gmail, with class crx_pjkljhegncpnkpknbcohdijeoejaedia:
 Old Exec parameter: Exec=/opt/google/chrome/google-chrome --profile-directory=Default --app-id=pjkljhegncpnkpknbcohdijeoejaedia
