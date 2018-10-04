@@ -1,7 +1,7 @@
 # fix_chrome_app_desktop_file
 An on-demand Google Chrome .desktop app window class updater bash script.
 
-This script works around an issue where KDE Plasma 5.1x (as of at least 2018-10-03) is unable to separate Google Chrome App windows from Google Chrome's general window class. A consequence of this would be Apps not using their intended icons, and also grouping under a single Chrome window. It's a minor usability issue.
+This script works around an issue where KDE Plasma 5.1x (as of at least 2018-10-03) is unable to separate Google Chrome App windows from Google Chrome's general window, due to using the same class. A more meaningful consequence of this would be Apps not using their intended icons, and also grouping under a single Chrome window. It's a minor usability issue in the end, but quite correctable.
 
 Credit for the workaround is due here: https://superuser.com/a/1068709
 
