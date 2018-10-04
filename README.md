@@ -15,7 +15,7 @@ As a workaround for other distros (or where this is not currently working), you 
 
 # Installation and Usage
 1. Place the script in `~/.local/share/applications`, where your respective .desktop files are.
-2. Set Execute permissions on the script. For example: `chmod 755 fix_chrome_app_desktop_file`
+2. If necessary, set Execute permissions on the script. For example: `chmod 755 fix_chrome_app_desktop_file`
 3. Determine which chrome-\*.desktop file you need to modify.  
 You can check the `Name` value from each of the chrome-\*.desktop files to see what Chrome App it corresponds with.
 4. Run the script with a chosen chrome-\*.desktop file for its argument.  
