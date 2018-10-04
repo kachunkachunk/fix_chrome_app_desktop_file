@@ -24,7 +24,7 @@ The script will automatically prompt the installation of `xdotool`, if needed.
 
 # Example
 ```
-$ ./fix_chrome_app_icon.bash chrome-pjkljhegncpnkpknbcohdijeoejaedia-Default.desktop`
+$ ./fix_kde_chrome_app_icon.bash chrome-pjkljhegncpnkpknbcohdijeoejaedia-Default.desktop`
 `Checking if xdotool is installed...
 xdotool is already installed - proceeding.
 Modifying chrome-pjkljhegncpnkpknbcohdijeoejaedia-Default.desktop, Gmail, with class crx_pjkljhegncpnkpknbcohdijeoejaedia:
