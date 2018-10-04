@@ -46,7 +46,7 @@ else
 		read var_install_xdotool
 
 		# If the user responds with Y/y/Empty, invoke pacman and install xdotool, then exit the loop:
-		if [[ $var_install_xdotool =~ [Y|y] || -z $var_install_xdotool ]]; then
+		if [[ $var_install_xdotool =~ ^[Y|y]$ || -z $var_install_xdotool ]]; then
 			echo "Invoking pacman..."
 			sudo pacman -S xdotool
 			var_loop="false"
