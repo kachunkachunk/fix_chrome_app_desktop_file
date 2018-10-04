@@ -3,7 +3,7 @@ An on-demand Google Chrome .desktop app window class updater bash script.
 
 This script works around an issue where KDE Plasma 5.1x (as of at least 2018-10-03) is unable to separate Google Chrome App windows from Google Chrome's general window class. A consequence of this would be Apps not using their intended icons, and also grouping under a single Chrome window. It's a minor usability issue.
 
-To the best of my knowledge, credit for the workaround is owed to the Stack Overflow answer by Adam Bellaire, from https://stackoverflow.com/questions/229551/how-to-check-if-a-string-contains-a-substring-in-bash.
+Credit for the workaround is due here: https://superuser.com/a/1068709
 
 I suspect this only helps users running X11. It's also quite possible that this is not inherently an issue on Wayland systems, but I have not tested this.
 
