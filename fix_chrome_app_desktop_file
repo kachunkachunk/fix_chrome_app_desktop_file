@@ -19,13 +19,13 @@ vBLUE='\033[0;34m'
 vNC='\033[0m'
 
 # Verify we have been supplied an argument.
-if [[ $# -eq 0 ]]; then
-	echo "No arguments supplied - please supply a chrome-*.desktop file for modification."
+if [[ $# -ne 1 ]]; then
+	echo "Invalid argument(s) supplied - please supply a chrome-*.desktop file for modification."
 	exit 1
 fi
 
 # Verify that the argument is a chrome .desktop file.
-if [[ $1 != "chrome-"*.desktop ]]; then
+if [[ $1 != */"chrome-"*.desktop ]]; then
 	echo -e "${vBLUE}$1${vNC} is not a chrome-*.desktop file."
 	exit 1
 fi
