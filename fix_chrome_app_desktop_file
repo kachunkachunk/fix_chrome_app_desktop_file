@@ -75,7 +75,7 @@ var_name=`grep "Name" $1 | cut -d "=" -f2`
 var_wmclass=`grep "StartupWMClass" $1 | cut -d "=" -f2`
 
 # Indicate intended change:
-echo -e "Modifying ${vBLUE}$1${vBLUE}, ${vGREEN}$var_name${vNC}, with class ${vYELLOW}$var_wmclass${vNC}:"
+echo -e "Modifying ${vBLUE}$1${vBLUE}, ${vGREEN}$var_name${vNC}, with class ${vYELLOW}$var_wmclass${vNC}"
 echo "Old Exec parameter: `grep "Exec=" $1`"
 
 # Make the change:
