@@ -1,0 +1,86 @@
+#!/bin/bash
+
+# =====================================================================================================================
+# On-demand chrome .desktop app window class updater by Duncan Armstrong (duncan.armstrong@gmail.com)
+#
+# This script works around an issue where KDE Plasma 5.1x (as of at least 2018-10-01) is unable to separate
+# Google Chrome App windows from Chrome's window class. Credit for the workaround goes to the Stack Overflow answer by
+# Adam Bellaire, from https://stackoverflow.com/questions/229551/how-to-check-if-a-string-contains-a-substring-in-bash
+#
+# Notable Revisions:
+# 2018-10-03: Initial script creation, largely for Arch/Manjaro systems (for now).
+# =====================================================================================================================
+
+# Establish some ANSI color variables.
+vRED='\033[0;31m'
+vGREEN='\033[0;32m'
+vYELLOW='\033[0;33m'
+vBLUE='\033[0;34m'
+vNC='\033[0m'
+
+# Verify we have been supplied an argument.
+if [[ $# -eq 0 ]]; then
+	echo "No arguments supplied - please supply a chrome-*.desktop file for modification."
+	exit 1
+fi
+
+# Verify that the argument is a chrome .desktop file.
+if [[ $1 != "chrome-"*.desktop ]]; then
+	echo -e "${vBLUE}$1${vNC} is not a chrome-*.desktop file."
+	exit 1
+fi
+
+# Verify that the system has xdotool installed.
+# So far this is only written with the assumption of running on Arch/Manjaro systems. I may or may not get around to a .deb/.rpm check as well.
+echo -en "Checking if ${vBLUE}xdotool${vNC} is installed... "
+if [[ $(pacman -Qi xdotool) ]]; then
+	echo "xdotool is already installed - proceeding."
+else
+	var_install_xdotool="unset"
+	var_loop="true"
+
+	# Loop until there is a satisfactory user input (Yy/Nn/Empty).
+	# Workaround: Seems like Until loops don't support regex conditional matches; using a larger While loop instead.
+	while [ $var_loop = "true" ]; do
+		echo -en "You do not have ${vBLUE}xdotool${vNC} installed yet. Would you like to install it ${vYELLOW}(Y/n)${vNC}? "
+		read var_install_xdotool
+
+		# If the user responds with Y/y/Empty, invoke pacman and install xdotool, then exit the loop:
+		if [[ $var_install_xdotool =~ [Y|y] || -z $var_install_xdotool ]]; then
+			echo "Invoking pacman..."
+			sudo pacman -S xdotool
+			var_loop="false"
+
+		# If the user responds with a clear N/n, exit the loop but indicate xdotool is required.:
+		elif [[ $var_install_xdotool =~ [N|n] ]]; then
+			echo -e "${vBLUE}xdotool${vNC} is required for this workaround or fix. Please install ${vBLUE}xdotool${vNC} to proceed."
+			var_loop="false"
+			exit 1
+                
+		# Otherwise, if the user didn't provide an acceptable input, loop back and ask again:
+		else
+			echo -en "${vRED}Invalid input${vNC}. "
+		fi
+	done
+fi
+
+# Verify that the .desktop file does not have an xdotool operation appended to its Exec line already.
+if [[ $(grep "xdotool" $1) ]]; then
+	echo -e "${vBLUE}$1${vNC} already contains an appending of xdotool in its Exec clause. Please check or revert this file."
+	exit 1
+fi
+
+# Read relevant content into variables.
+var_name=`grep "Name" $1 | cut -d "=" -f2`
+var_wmclass=`grep "StartupWMClass" $1 | cut -d "=" -f2`
+
+# Indicate intended change:
+echo -e "Modifying ${vBLUE}$1${vBLUE}, ${vGREEN}$var_name${vNC}, with class ${vYELLOW}$var_wmclass${vNC}:"
+echo "Old Exec parameter: `grep "Exec=" $1`"
+
+# Make the change:
+sed -i "/^Exec=/ s/$/ \&\&xdotool search --sync --classname $var_wmclass set_window --class $var_wmclass/" $1
+
+# Indicate the completed change and exit:
+echo "New Exec parameter: `grep "Exec=" $1`"
+echo "Done!"
