@@ -1,16 +1,16 @@
 # fix_chrome_app_desktop_file
-An on-demand Google Chrome .desktop app window class updater bash script.
+An on-demand Google Chrome .desktop app window class updater bash script. Made by me, for me, but shared against better judgment. For now I don't maintain this and use Chromium instead, where the issue doesn't seem to occur.
 
-This script works around an issue where KDE Plasma 5.1x (as of at least 2018-10-03) is unable to separate Google Chrome App windows from Google Chrome's general window, due to using the same class. A more meaningful consequence of this would be Apps not using their intended icons, and also grouping under a single Chrome window. It's a minor usability issue in the end, but quite correctable.
+This script attempts to work around an issue where KDE Plasma 5.1x (as of at least 2018-10-03) is unable to separate Google Chrome App windows from Google Chrome's general window, presumably from using the same class. A more meaningful consequence of this would be Apps not using their intended icons, and also grouping under a single Chrome window. It's a minor usability issue in the end, but it is (or was?) correctable.
 
-Credit for the workaround is due here: https://superuser.com/a/1068709
+Credit for the workaround is really due here: https://superuser.com/a/1068709
 
-I suspect this only helps users running X11. It's also quite possible that this is not inherently an issue on Wayland systems, but I have not tested this.
+I suspect this only helps users running X11. It's also quite possible that this is not inherently an issue on Wayland systems, but I won't be testing this for a very long time, probably.
 
 
 # Requirements
 1. Your system will need the `xdotool` package.
-2. For now, this has been written only for Arch-based systems, but I should be able to update the script for .deb and .rpm-based distributions as well, and quite soon.  
+2. At least for now, this has been written only for Arch-based systems, but I should be able to update the script for .deb and .rpm-based distributions as well, and quite soon.  
 As a workaround for other distributions (or where this is not currently working), you can modify the section involving `pacman` or omit the package install condition check logic altogether.
 
 
@@ -23,7 +23,7 @@ For example, `./fix_chrome_app_desktop_file ~/.local/share/applications/chrome-p
 
 
 The script will automatically prompt the installation of `xdotool`, if needed.  
-To-do: Make this work nicely for .deb and .rpm-based distributions.
+Possible to-do: Make this work nicely for .deb and .rpm-based distributions.
 
 
 # Example
