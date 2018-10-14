@@ -25,7 +25,7 @@ if [[ $# -ne 1 ]]; then
 fi
 
 # Verify that the argument is a chrome .desktop file.
-if [[ $1 != */"chrome-"*.desktop ]]; then
+if [[ $1 =~ chrome-*.desktop ]]; then
 	echo -e "${vBLUE}$1${vNC} is not a chrome-*.desktop file."
 	exit 1
 fi
